@@ -1,5 +1,7 @@
-/*Style information for all pages*/
-
+/*font-family: 'Great Vibes', cursive;
+font-family: 'Pinyon Script', cursive;
+font-family: 'Sail', cursive;
+font-family: 'Miss Fajardose', cursive;/*Style information for all pages*/
 
 
 body {
@@ -7,6 +9,28 @@ body {
 
 }
 
+#title-style {
+	font-family: 'Miss Fajardose', cursive;
+
+}
+
+.jumboStyle {
+	padding: 11px 0px;
+}
+
+#show-timer {
+	text-align: center;
+	padding: 0px;
+	margin: 5px;
+	font-size: 18px;
+}
+
+.time-panel-style {
+	padding: 0px;
+	margin: 5px;
+	width: 50%;
+}
+/*need spacing around the buttons*/
 
 
 
