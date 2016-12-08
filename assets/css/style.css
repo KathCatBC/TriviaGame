@@ -1,7 +1,10 @@
 /*font-family: 'Great Vibes', cursive;
 font-family: 'Pinyon Script', cursive;
 font-family: 'Sail', cursive;
-font-family: 'Miss Fajardose', cursive;/*Style information for all pages*/
+font-family: 'Miss Fajardose', cursive;*/
+
+
+/*Style information for all pages*/
 
 
 body {
@@ -14,23 +17,61 @@ body {
 
 }
 
+.form-style {
+	border-width: 5px
+	border: solid;
+	margin: 20px;
+	padding: 5px;
+	border-color: black;
+	background-color: azure;
+	position: relative;
+	z-index: 10
+}
+
+.form-styleCorrect {
+	border-width: 5px
+	border: solid;
+	margin: 20px;
+	padding: 5px;
+	border-color: black;
+	background-color: wheat;
+	position: relative;
+	z-index: -10
+}
+
+.form-styleWrong {
+	border-width: 5px
+	border: solid;
+	margin: 20px;
+	padding: 5px;
+	border-color: black;
+	background-color: wheat;
+	position: relative;
+	z-index: -10
+}
+
+
 .jumboStyle {
 	padding: 11px 0px;
 }
 
 #show-timer {
-	text-align: center;
+/*	text-align: center;*/
 	padding: 0px;
 	margin: 5px;
 	font-size: 18px;
 }
 
+.panel-style {
+	width: 200px;
+}
+
 .time-panel-style {
 	padding: 0px;
 	margin: 5px;
-	width: 50%;
+	width: 160px;
 }
-/*need spacing around the buttons*/
+
 
 
 

@@ -1,21 +1,24 @@
-
 var rightCount = 0;  //number questions answered correctly
 var wrongCount = 0;  // Count of questions answered incorretly
 var timedOutCount = 0;  // number of questions not answered before the clock ran out
 var winStatus = "";  // boolean true if answered correctly - false if timed out or wrong
 var maxTime = 30;
 var counter = 0; // used for the timer
-correctAns = ""
+var correctAns = ""
+var ansIndex = ""
+var i = 0 //  loop counter for do while loop
 var trivia = [ 
 			{"question":"Which state was not one of the original 13 colonies?",
 			"a0":"Vermont", "a1": "South Carolina",	"a2": "New Hampshire", "a3": "Georgia",
-			"correct": "opt0"}, 
+			"correctNum": "0", "correctStr": "Vermont"}, 
 			{"question": "What is the top selling duty-free product?", "a0": "Perfume", "a1": "Alcohol", "a2": "Cigarettes", "a3": "Jewelry",
-			"correct": "opt2"},
+			"correct": "2"},
 			{"question": "What can horses not do?", "a0": "Fart", "a1": "Cough", "a2": "Sneeze", "a3": "Burp",
-			"correct": "opt3"} // object containing all the Q's & A's and right A's
+			"correct": "3"} // object containing all the Q's & A's and right A's
 ];
 
+
+// do {
 var x = load()
 
 //create a function to set up buttons with attributes the first time the program runs
@@ -26,54 +29,42 @@ $(document).on('click', ".btn", function() {
 
 	console.log("button clicked")
 
-// 	stop timer
-
+	clearInterval(counter);
+	
 	console.log("button number:  " + $(this).attr("id"))
+	console.log("correct = opt" + correctAns)
 		//this tells me which button was clicked.  Check it against "correct"
-		if($(this).attr("id") === correctAns) {
+		if($(this).attr("id") === "opt"+correctAns) {
 			console.log("you are right")
-			rightCount++
 			winStatus = true
+			rightCount++
 		}
 		else {
 			console.log("WRONG!")
 			wrongCount++
 	 		winStatus = false
 		}
-// 	Call function to display right or wrong answer
+	rightorwrong(winStatus) // 	Call function to display right or wrong answer
 })
 
+	
+ 	function run() {
+ 		maxTime = 30 //reset for next question
+ 		$("#show-timer").text(maxTime);  // do this here or you won't see 30 seconds
+      	counter = setInterval(decrement, 1000);
+    }
 
-
-
-
-// 	if (winStatus)
-// 		display New screen with "correct" or similar message
-// 	else //  if time ran out or wrong answer
-// 		display new screen with wrong answer and tell the user the correct answer
-// }  end of function
-
-// function timechecker {
-
-// 	should be able to run the timer in this event as well a check to make sure there is enough time on the clock
- 	
- 	// function run() {
- 	// 	maxTime = 30 //reset for next question
- 	// 	$("#show-timer").html("Remaining Time:  " + maxTime);  // do this here or you won't see 30 seconds
-  //     	counter = setInterval(decrement, 1000);
-  //   }
-
-  //   function decrement() {
-  //     maxTime--;
-  //     $("#show-timer").html("Remaining Time:  " + maxTime);
-  //     if (maxTime === 0) {;
-  //     		clearInterval(counter);
-		// 	timedOut = true;
-		// 	timedOutCount++;
-		// 	winStatus = false;
-		// // call function to display right or wrong answer
-  //     }
-  //   }
+    function decrement() {
+      maxTime--;
+      $("#show-timer").text(maxTime);
+      if (maxTime === 0) {
+      		clearInterval(counter);
+			timedOut = true;
+			timedOutCount++;
+			winStatus = false;
+			rightorwrong(winStatus) // call function to display right or wrong answer
+      }
+    }
 
 // for object length  // all questions in the object
 // make sure clock does not start until document is ready
@@ -86,13 +77,27 @@ function load() {  //test load
 	$("#opt3").html(trivia[0].a3);
 	correctAns = trivia[0].correct;
 
-	// 	start timer  // call timer function  
+
+	y = run()  
 // end for loop
 
 }
 
 
+function rightorwrong(wls){
 
+	// i++ //increment loop counter for do while loop
+	if (wls){  // boolean that is all i need
+		console.log("you won")
+
+	}
+	else {
+		console.log("you lost");
+	 	$("#show-answer").html(trivia[0].correctStr)
+	}
+}
+
+// } while (i < trivia.length);
 
 // end of game
 // 	display number of correct answers

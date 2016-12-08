@@ -18,12 +18,13 @@
 <body>
 
 	<div id="title-panel title-style">
-
-<!-- <div style="font-family: 'Font Name', serif;">Your text</div> -->
-
-
 		<center>In Pursuit of Trival Triva</center>
 	</div>
+
+
+<form class="form-horizontal form-style">
+  <fieldset>
+
 
 	<div class="jumbotron jumboStyle">
   		<h4>Question</h4>
@@ -33,9 +34,9 @@
 	<br>
 
 
-	<div class="panel panel-default time-panel-style">
-  		<div class="panel-body" id = "show-timer">
-    		 
+	<div class="panel panel-default panel-style">
+  		<div class="panel-body time-panel-style">
+    		 Remaining Time:  <span id="show-timer"></span>
   		</div>
 	</div>
 
@@ -44,8 +45,17 @@
 	<a href="#" class="btn btn-default btn-lg btn-block" id = "opt1">Choice 2 here</a>
 	<a href="#" class="btn btn-default btn-lg btn-block" id = "opt2">Choice 3 here</a>
 	<a href="#" class="btn btn-default btn-lg btn-block" id = "opt3">Choice 4 here</a>
+ 
+  </fieldset>
+</form>
 
 
+<form class="form-horizontal form-styleCorrect" id = "correctForm">
+	"Correct"
+ </form>
+ <form class="form-horizontal form-styleWrong" id = "wrongForm">
+	"Wrong!  The correct answer is:"<br><span id="show-answer"></span>
+ </form>
 
 	<script type='text/javascript' src='https://code.jquery.com/jquery.js'></script>
 	
