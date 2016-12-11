@@ -8,7 +8,7 @@
 
 	<link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/readable/bootstrap.min.css" rel="stylesheet">
 
-	<link href="https://fonts.googleapis.com/css?family=Great+Vibes|Miss+Fajardose|Pinyon+Script|Sail" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Miss+Fajardose" rel="stylesheet">
 
 	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
 
@@ -17,45 +17,46 @@
 
 <body>
 
-	<div id="title-panel title-style">
+	
+
+<div class="mainScreen" id="qAnda">
+
+	<div id="title-style">
 		<center>In Pursuit of Trival Triva</center>
 	</div>
-
-
-<form class="form-horizontal form-style">
-  <fieldset>
-
 
 	<div class="jumbotron jumboStyle">
   		<h4>Question</h4>
   		<p>Put question here</p>
-  		<!-- format question panel better -->
-	</div>
-	<br>
-
-
-	<div class="panel panel-default panel-style">
-  		<div class="panel-body time-panel-style">
-    		 Remaining Time:  <span id="show-timer"></span>
-  		</div>
 	</div>
 
-	<br>
-	<a href="#" class="btn btn-default btn-lg btn-block" id = "opt0">Choice 1 here</a>
-	<a href="#" class="btn btn-default btn-lg btn-block" id = "opt1">Choice 2 here</a>
-	<a href="#" class="btn btn-default btn-lg btn-block" id = "opt2">Choice 3 here</a>
-	<a href="#" class="btn btn-default btn-lg btn-block" id = "opt3">Choice 4 here</a>
- 
-  </fieldset>
-</form>
+  	<div class="panel-body time-panel-style">
+    	 Remaining Time:  <span id="show-timer"></span>
+  	</div>
 
 
-<form class="form-horizontal form-styleCorrect" id = "correctForm">
-	"Correct"
- </form>
- <form class="form-horizontal form-styleWrong" id = "wrongForm">
-	"Wrong!  The correct answer is:"<br><span id="show-answer"></span>
- </form>
+	<div class = "splashScreen" id="questions">
+		<a class="btn btn-default btn-lg btn-block" id = "opt0"></a>
+		<a class="btn btn-default btn-lg btn-block" id = "opt1"></a>
+		<a class="btn btn-default btn-lg btn-block" id = "opt2"></a>
+		<a class="btn btn-default btn-lg btn-block" id = "opt3"></a>
+ 	</div>
+  
+
+
+
+	<div class="splashScreen rightWrongScreen" id = "correctScreen">
+		"Correct"
+ 	</div>
+ 	<div class="splashScreen rightWrongScreen" id = "wrongScreen">
+		<span id="show-reason""></span> + <span id="show-answer"></span>
+ 	</div>
+ 	<div class="splashScreen" id = "startScreen">
+		Are you ready to Pursue Trivial Trivia?
+
+ 	</div>
+
+ </div>
 
 	<script type='text/javascript' src='https://code.jquery.com/jquery.js'></script>
 	

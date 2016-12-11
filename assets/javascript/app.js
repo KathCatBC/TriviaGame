@@ -1,27 +1,34 @@
 var rightCount = 0;  //number questions answered correctly
 var wrongCount = 0;  // Count of questions answered incorretly
 var timedOutCount = 0;  // number of questions not answered before the clock ran out
-var winStatus = "";  // boolean true if answered correctly - false if timed out or wrong
+var winStatus = false;  // boolean true if answered correctly - false if timed out or wrong
 var maxTime = 30;
 var counter = 0; // used for the timer
 var correctAns = ""
 var ansIndex = ""
-var i = 0 //  loop counter for do while loop
+var TimedOut = false
+var i = 0 //  loop counter 
+var y = ""  //  used to call functions why?
 var trivia = [ 
 			{"question":"Which state was not one of the original 13 colonies?",
 			"a0":"Vermont", "a1": "South Carolina",	"a2": "New Hampshire", "a3": "Georgia",
-			"correctNum": "0", "correctStr": "Vermont"}, 
+			"correct": "opt0", "correctStr": "Vermont"}, 
 			{"question": "What is the top selling duty-free product?", "a0": "Perfume", "a1": "Alcohol", "a2": "Cigarettes", "a3": "Jewelry",
-			"correct": "2"},
+			"correct": "opt2", "correctStr": "Cigarettes"},
 			{"question": "What can horses not do?", "a0": "Fart", "a1": "Cough", "a2": "Sneeze", "a3": "Burp",
-			"correct": "3"} // object containing all the Q's & A's and right A's
+			"correct": "opt3", "correctStr": "Burp"} // object containing all the Q's & A's and right A's
 ];
 
+$("#startScreen").hide()
+// $("#startScreen").show()
+$("#wrongScreen").hide()
+$("#correctScreen").hide()
+$("#timeScreen").hide()
+$("#questions").show()
 
-// do {
-var x = load()
 
-//create a function to set up buttons with attributes the first time the program runs
+load();   //load first question
+run();    // start timer & wait for a button click
 
 
 
@@ -32,20 +39,22 @@ $(document).on('click', ".btn", function() {
 	clearInterval(counter);
 	
 	console.log("button number:  " + $(this).attr("id"))
-	console.log("correct = opt" + correctAns)
+	console.log("correct = " + correctNum);
 		//this tells me which button was clicked.  Check it against "correct"
-		if($(this).attr("id") === "opt"+correctAns) {
+		if($(this).attr("id") === correctNum) {
 			console.log("you are right")
-			winStatus = true
-			rightCount++
+			winStatus = true;
+			rightCount++;
+			rightorwrong(winStatus);
 		}
 		else {
-			console.log("WRONG!")
-			wrongCount++
-	 		winStatus = false
+			console.log("WRONG!");
+			wrongCount++;
+	 		winStatus = false;
+	 		$("#show-reason").text("You selected the wrong answer");
+	 		rightorwrong(winStatus)
 		}
-	rightorwrong(winStatus) // 	Call function to display right or wrong answer
-})
+}) // end of on click event
 
 	
  	function run() {
@@ -55,49 +64,56 @@ $(document).on('click', ".btn", function() {
     }
 
     function decrement() {
-      maxTime--;
-      $("#show-timer").text(maxTime);
-      if (maxTime === 0) {
+    	maxTime--;
+      	$("#show-timer").text(maxTime);
+      	if (maxTime == 0) {       
       		clearInterval(counter);
-			timedOut = true;
-			timedOutCount++;
 			winStatus = false;
-			rightorwrong(winStatus) // call function to display right or wrong answer
-      }
+			timedOutCount++;
+			console.log("time is up!");
+			$("#show-reason").text("Time is up!")
+			rightorwrong(winStatus);
+      	}
     }
 
-// for object length  // all questions in the object
-// make sure clock does not start until document is ready
-
-function load() {  //test load
-	$(".jumbotron").html(trivia[0].question); 
-	$("#opt0").html(trivia[0].a0);
-	$("#opt1").html(trivia[0].a1);
-	$("#opt2").html(trivia[0].a2);
-	$("#opt3").html(trivia[0].a3);
-	correctAns = trivia[0].correct;
 
 
-	y = run()  
-// end for loop
 
-}
+function load() {  // load the q&a into the buttons & jumbotron
+	$(".jumbotron").text(trivia[i].question); 
+	$("#opt0").text(trivia[i].a0);
+	$("#opt1").text(trivia[i].a1);
+	$("#opt2").text(trivia[i].a2);
+	$("#opt3").text(trivia[i].a3);
+	correctNum = trivia[i].correct;
+}  // end of load function
 
 
 function rightorwrong(wls){
+		if (wls) {  // boolean that is all i need
+			console.log("you won");
+			$("#questions").hide;
+			$("#correctScreen").show;
+			// document.getElementById('#questions').style.display = 'none';
+			// document.getElementById("#correctScreen").style.display = 'inline';
+		}
+		else {
+			$("#show-answer").text(trivia[i].correctStr)
+			$("#questions").hide;
+			$("#wrongScreen").show;
+		}
+		y = setTimeout(pauseAndReload, 1000*5)
+}  // end of rightorwrong
 
-	// i++ //increment loop counter for do while loop
-	if (wls){  // boolean that is all i need
-		console.log("you won")
+function pauseAndReload() {
+	i++
+	y = load()
+	$(".rightWrongScreen").hide;
+	$("#questions").show;
+	y = run()
 
-	}
-	else {
-		console.log("you lost");
-	 	$("#show-answer").html(trivia[0].correctStr)
-	}
 }
 
-// } while (i < trivia.length);
 
 // end of game
 // 	display number of correct answers
