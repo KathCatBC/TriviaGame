@@ -19,39 +19,44 @@ var trivia = [
 			"correct": "opt3", "correctStr": "Burp"} // object containing all the Q's & A's and right A's
 ];
 
-$("#startScreen").hide()
-// $("#startScreen").show()
-$("#wrongScreen").hide()
-$("#correctScreen").hide()
-$("#timeScreen").hide()
-$("#questions").show()
+
+$("#startScreen").show();
+$(".rightWrongScreen").hide();
+$("#questions").hide();
+$("#endScreen").hide();
+$(".time-panel-style").hide();
 
 
-load();   //load first question
-run();    // start timer & wait for a button click
 
+$(document).on('click', "#buttonStart", function() {
+	load();   //load first question
+	$(".time-panel-style").show();
+	$("#startScreen").hide();
+	$("#questions").show();
+	run();    // start timer & wait for a button click
+});
 
 
 $(document).on('click', ".btn", function() {
 
-	console.log("button clicked")
+	// console.log("button clicked")
 
 	clearInterval(counter);
 	
-	console.log("button number:  " + $(this).attr("id"))
-	console.log("correct = " + correctNum);
+	// console.log("button number:  " + $(this).attr("id"))
+	// console.log("correct = " + correctNum);
 		//this tells me which button was clicked.  Check it against "correct"
 		if($(this).attr("id") === correctNum) {
-			console.log("you are right")
+			// console.log("you are right")
 			winStatus = true;
 			rightCount++;
 			rightorwrong(winStatus);
 		}
 		else {
-			console.log("WRONG!");
+			// console.log("WRONG!");
 			wrongCount++;
 	 		winStatus = false;
-	 		$("#show-reason").text("You selected the wrong answer");
+	 		$("#show-reason").text("You selected the wrong answer.  The correct answer is:  ");
 	 		rightorwrong(winStatus)
 		}
 }) // end of on click event
@@ -71,12 +76,10 @@ $(document).on('click', ".btn", function() {
 			winStatus = false;
 			timedOutCount++;
 			console.log("time is up!");
-			$("#show-reason").text("Time is up!")
+			$("#show-reason").text("Time is up!  The correct answer is:  ")
 			rightorwrong(winStatus);
       	}
     }
-
-
 
 
 function load() {  // load the q&a into the buttons & jumbotron
@@ -92,47 +95,51 @@ function load() {  // load the q&a into the buttons & jumbotron
 function rightorwrong(wls){
 		if (wls) {  // boolean that is all i need
 			console.log("you won");
-			$("#questions").hide;
-			$("#correctScreen").show;
-			// document.getElementById('#questions').style.display = 'none';
-			// document.getElementById("#correctScreen").style.display = 'inline';
+			$("#questions").hide();
+			$("#correctScreen").show();
 		}
 		else {
+			console.log("lost")
 			$("#show-answer").text(trivia[i].correctStr)
-			$("#questions").hide;
-			$("#wrongScreen").show;
+			$("#questions").hide();
+			$("#wrongScreen").show();
 		}
-		y = setTimeout(pauseAndReload, 1000*5)
+		y = setTimeout(pauseAndReload, 1000*3)
 }  // end of rightorwrong
 
 function pauseAndReload() {
 	i++
-	y = load()
-	$(".rightWrongScreen").hide;
-	$("#questions").show;
-	y = run()
-
+	console.log("i = " + i)
+	if (i<trivia.length) {
+		load()
+		$(".rightWrongScreen").hide();
+		$("#questions").show();
+		run()
+	} 
+	else {
+		console.log("you have reached the end of trivia")
+		$(".time-panel-style").hide();
+		$(".rightWrongScreen").hide();
+		$("#endScreen").show()
+	}
 }
 
 
-// end of game
-// 	display number of correct answers
-// 	display number of wrong answers
-// 	display number of answers timedOut
-// 	Ask if you want to play again
-// 		if yes
-// 			Call resetAndRestart function
+$(document).on('click', "#buttonRestart", function() {
+	
 
 
+	// show stats
+	
+
+	rightCount = 0 ;
+	wrongCount = 0 ;
+	timedOutCount = 0;
+
+	load();   //load first question
+	$("#endScreen").hide()
+	$("#questions").show()
+	run();    // start timer & wait for a button click
+});
 
 
-// resetAndRestart function() {
-// 	// set appropriate variables back to original values
-// 	rightCount = 0 ;
-// 	wrongCount = 0 ;
-// 	timedOutCount = 0;
-//	Reload the start page?  check video to see where I start again
-//	or start again at question 1
-
-
-// }

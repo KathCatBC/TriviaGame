@@ -77,5 +77,6 @@ body {
 	border-color: black;
 	height: 350px;
 	background-color: azure;
+	position: relative;
 }
 
