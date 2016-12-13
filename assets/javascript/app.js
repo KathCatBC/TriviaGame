@@ -8,7 +8,6 @@ var correctAns = ""
 var ansIndex = ""
 var TimedOut = false
 var i = 0 //  loop counter 
-var y = ""  //  used to call functions why?
 var trivia = [ 
 			{"question":"Which state was not one of the original 13 colonies?",
 			"a0":"Vermont", "a1": "South Carolina",	"a2": "New Hampshire", "a3": "Georgia",
@@ -103,7 +102,11 @@ function pauseAndReload() {
 		$("#questions").show();
 		run()
 	} 
-	else {
+	else {  //game over
+		$("#show-correct").text(rightCount);
+		$("#show-wrong").text(wrongCount);
+		$("#show-timedup").text(timedOutCount);
+		$(".jumbotron").hide();
 		$(".time-panel-style").hide();
 		$(".rightWrongScreen").hide();
 		$("#endScreen").show()
@@ -114,17 +117,17 @@ function pauseAndReload() {
 $(document).on('click', "#buttonRestart", function() {
 	
 
-
-	// show stats
 	
-
+	//reset variables back to the beginning state
 	rightCount = 0 ;
 	wrongCount = 0 ;
 	timedOutCount = 0;
-
+	i = 0;
+	
 	load();   //load first question
-	$("#endScreen").hide()
-	$("#questions").show()
+	$("#endScreen").hide();
+	$(".jumbotron").show();
+	$("#questions").show();
 	run();    // start timer & wait for a button click
 });
 

@@ -50,20 +50,20 @@ body {
 	padding: 30px;
 	border-style: solid;
 	height: 350px;
-	background-color: white;
+	background-color: #656678;
 	position: relative;
-	text-align: center
+	text-align: center;
+	font-size: 30px;
 }
 
 #startScreen {
-	font-size: 30px;
 	font-weight: bold;
-	background-color: white;
 	border-color: black;
+	background-color: white;
 }
 
 #correctScreen {
-	font-size: 30px;
+	font-weight: bold;
 	background-color: #b3b3b3;
 	border-color: #318837;
 }
@@ -71,9 +71,12 @@ body {
 #wrongScreen {
 	border-color: red;
 	background-color: #b3b3b3;
-	font-size: 30px;
 }
 
 #endScreen {
-	border-color: black
+	border-color: blue;
+	background-color: white;
+}
+#answerpanel {
+	font-size: 20px;
 }
