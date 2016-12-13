@@ -4,7 +4,7 @@
 
 body {
 	background: url("../images/questionmark.png");
-
+	font-family: "Raleway","Helvetica Neue",Helvetica,Arial,sans-serif;
 }
 
 #title-style {
@@ -21,31 +21,9 @@ body {
 	height: 590px;
 }
 
-/*.form-styleCorrect {
-	border-width: 5px
-	border: solid;
-	margin: 20px;
-	padding: 5px;
-	border-color: black;
-	background-color: wheat;
-	position: relative;
-}*/
-
-/*.form-styleWrong {
-	border-width: 5px
-	border: solid;
-	margin: 20px;
-	padding: 5px;
-	border-color: black;
-	background-color: wheat;
-	position: relative;
-}*/
-
-
 .jumboStyle {
 	padding: 11px 0px;
 	font-size: 20px;
-	font-family: "Raleway","Helvetica Neue",Helvetica,Arial,sans-serif;
 	text-align: center
 }
 
@@ -64,19 +42,38 @@ body {
 	width: 180px;
 	background-color: white;
 	font-size: 18px;
-	font-family: "Raleway","Helvetica Neue",Helvetica,Arial,sans-serif;
 }
-
-
 
 .splashScreen {
 	border-width: 5px;
 	margin: 10px;
 	padding: 30px;
 	border-style: solid;
-	border-color: black;
 	height: 350px;
-	background-color: azure;
+	background-color: white;
 	position: relative;
+	text-align: center
 }
 
+#startScreen {
+	font-size: 30px;
+	font-weight: bold;
+	background-color: white;
+	border-color: black;
+}
+
+#correctScreen {
+	font-size: 30px;
+	background-color: #b3b3b3;
+	border-color: #318837;
+}
+
+#wrongScreen {
+	border-color: red;
+	background-color: #b3b3b3;
+	font-size: 30px;
+}
+
+#endScreen {
+	border-color: black
+}

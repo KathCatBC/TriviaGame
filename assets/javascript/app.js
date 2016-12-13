@@ -38,27 +38,18 @@ $(document).on('click', "#buttonStart", function() {
 
 
 $(document).on('click', ".btn", function() {
-
-	// console.log("button clicked")
-
 	clearInterval(counter);
-	
-	// console.log("button number:  " + $(this).attr("id"))
-	// console.log("correct = " + correctNum);
-		//this tells me which button was clicked.  Check it against "correct"
-		if($(this).attr("id") === correctNum) {
-			// console.log("you are right")
-			winStatus = true;
-			rightCount++;
-			rightorwrong(winStatus);
-		}
-		else {
-			// console.log("WRONG!");
-			wrongCount++;
-	 		winStatus = false;
-	 		$("#show-reason").text("You selected the wrong answer.  The correct answer is:  ");
-	 		rightorwrong(winStatus)
-		}
+	if($(this).attr("id") === correctNum) {
+		winStatus = true;
+		rightCount++;
+		rightorwrong(winStatus);
+	}
+	else {
+		wrongCount++;
+	 	winStatus = false;
+	 	$("#show-reason").html("You selected the wrong answer. <br>  The correct answer is:  ");
+	 	rightorwrong(winStatus)
+	}
 }) // end of on click event
 
 	
@@ -75,8 +66,7 @@ $(document).on('click', ".btn", function() {
       		clearInterval(counter);
 			winStatus = false;
 			timedOutCount++;
-			console.log("time is up!");
-			$("#show-reason").text("Time is up!  The correct answer is:  ")
+			$("#show-reason").html("Time is up! <br> The correct answer is:  ")
 			rightorwrong(winStatus);
       	}
     }
@@ -94,12 +84,10 @@ function load() {  // load the q&a into the buttons & jumbotron
 
 function rightorwrong(wls){
 		if (wls) {  // boolean that is all i need
-			console.log("you won");
 			$("#questions").hide();
 			$("#correctScreen").show();
 		}
 		else {
-			console.log("lost")
 			$("#show-answer").text(trivia[i].correctStr)
 			$("#questions").hide();
 			$("#wrongScreen").show();
@@ -109,7 +97,6 @@ function rightorwrong(wls){
 
 function pauseAndReload() {
 	i++
-	console.log("i = " + i)
 	if (i<trivia.length) {
 		load()
 		$(".rightWrongScreen").hide();
@@ -117,7 +104,6 @@ function pauseAndReload() {
 		run()
 	} 
 	else {
-		console.log("you have reached the end of trivia")
 		$(".time-panel-style").hide();
 		$(".rightWrongScreen").hide();
 		$("#endScreen").show()
