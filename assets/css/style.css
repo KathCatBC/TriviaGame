@@ -1,7 +1,4 @@
 
-/*Style information for all pages*/
-
-
 body {
 	background: url("../images/questionmark.png");
 	font-family: "Raleway","Helvetica Neue",Helvetica,Arial,sans-serif;
@@ -50,7 +47,7 @@ body {
 	padding: 30px;
 	border-style: solid;
 	height: 350px;
-	background-color: #656678;
+	background-color: #888888;
 	position: relative;
 	text-align: center;
 	font-size: 30px;
